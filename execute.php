@@ -22,7 +22,7 @@ header("Content-Type: application/json");
 
 if ($text[0] == "/") {
     switch ($text) {
-        case "hi":
+        case "/hi":
             sendMessage($chatId, "Hi {$firstname}");
             break;
         default:
