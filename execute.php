@@ -2,9 +2,8 @@
 $content = file_get_contents("php://input");
 $update = json_decode($content, true);
 
-if(!$update)
-{
-  exit;
+if (!$update) {
+    exit;
 }
 
 $message = isset($update['message']) ? $update['message'] : "";
@@ -20,6 +19,16 @@ $text = trim($text);
 $text = strtolower($text);
 
 header("Content-Type: application/json");
+
+if ($text == "kebab?") {
+    if (rand() < 0.7) {
+        $text = "Te sembra il caso? Mo?";
+    } else {
+        $text = "Zozzo! Ce sto!";
+    }
+}
+
 $parameters = array('chat_id' => $chatId, "text" => $text);
 $parameters["method"] = "sendMessage";
+
 echo json_encode($parameters);
