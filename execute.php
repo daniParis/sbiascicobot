@@ -20,12 +20,24 @@ $text = strtolower($text);
 
 header("Content-Type: application/json");
 
+if ($text[0] == "/") {
+    switch ($text) {
+        default:
+            sendMessage($chatId, "No function '" . substr($text, 1) . "' defined");
+    }
+}
+
 if ($text == "kebab?") {
     if (rand(0, 10) < 7) {
-        $text = "Te sembra il caso? Mo?";
+        sendMessage($chatId, "Te sembra il caso? Mo?");
     } else {
-        $text = "Zozzo! Ce sto!";
+        sendMessage($chatId, "Zozzo! Ce sto!");
     }
+}
+
+
+function sendMessage($chatId, $text, $method = "sendMessage")
+{
     $parameters = array('chat_id' => $chatId, "text" => $text);
     $parameters["method"] = "sendMessage";
 
