@@ -22,6 +22,9 @@ header("Content-Type: application/json");
 
 if ($text[0] == "/") {
     switch ($text) {
+        case "hi":
+            sendMessage($chatId, "Hi {$firstname}");
+            break;
         default:
             sendMessage($chatId, "No function '" . substr($text, 1) . "' defined");
     }
