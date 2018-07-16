@@ -28,7 +28,7 @@ if ($text == "kebab?") {
     }
 }
 
-$parameters = array('chat_id' => $chatId, "text" => $text);
+$parameters = array('chat_id' => $chatId, "text" => $firstname . " : " . $text);
 $parameters["method"] = "sendMessage";
 
 echo json_encode($parameters);
