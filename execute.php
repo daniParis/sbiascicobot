@@ -10,8 +10,8 @@ $message = isset($update['message']) ? $update['message'] : "";
 $messageId = isset($message['message_id']) ? $message['message_id'] : "";
 $chatId = isset($message['chat']['id']) ? $message['chat']['id'] : "";
 $firstname = isset($message['chat']['first_name']) ? $message['chat']['first_name'] : isset($message['from']['first_name']) ? $message['from']['first_name'] : "";
-$lastname = isset($message['chat']['last_name']) ? $message['chat']['last_name'] : "";
-$username = isset($message['chat']['username']) ? $message['chat']['username'] : "";
+$lastname = isset($message['chat']['last_name']) ? $message['chat']['last_name'] : isset($message['from']['last_name']) ? $message['from']['last_name'] : "";
+$username = isset($message['chat']['username']) ? $message['chat']['username'] : isset($message['from']['username']) ? $message['from']['username'] : "";
 $date = isset($message['date']) ? $message['date'] : "";
 $text = isset($message['text']) ? $message['text'] : "";
 
@@ -23,7 +23,7 @@ header("Content-Type: application/json");
 if ($text[0] == "/") {
     switch ($text) {
         case "/hi":
-            sendMessage($chatId, "Hi {$firstname} {$lastname}!");
+            sendMessage($chatId, "Hi {$firstname}");
             break;
         default:
             sendMessage($chatId, "No function '" . substr($text, 1) . "' defined");
