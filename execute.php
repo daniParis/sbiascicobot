@@ -1,4 +1,6 @@
 <?php
+require "commands/first_google_search.php";
+
 $content = file_get_contents("php://input");
 $update = json_decode($content, true);
 
@@ -20,10 +22,19 @@ $text = strtolower($text);
 
 header("Content-Type: application/json");
 
-if ($text[0] == "/") {
-    switch ($text) {
+if ($text[0] == "/" && preg_match("[^ ]*", $text, $matches)) {
+    switch ($matches[1]) {
         case "/hi":
             sendMessage($chatId, "Hi {$firstname}");
+            break;
+        case "/google":
+            $serch = str_replace(" ", "+", str_replace("/google ", "", $text));
+            $result = getFirstUrlFromGoogle($search);
+            if (!$result) {
+                sendMessage($chatId, "Mi dispiace {$firstname} ma non ho trovato nulla riguardo '" . str_replace("/google ", "", $text) ."'");
+            } else {
+                sendMessage($chatId, "Stavi forse cercando questo?\n{$result}");
+            }
             break;
         default:
             sendMessage($chatId, "No function '" . substr($text, 1) . "' defined");
