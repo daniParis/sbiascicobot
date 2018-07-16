@@ -1,5 +1,5 @@
 <?php
-require "commands/first-google-search.php";
+// require "commands/first-google-search.php";
 
 $content = file_get_contents("php://input");
 $update = json_decode($content, true);
@@ -28,15 +28,15 @@ if ($text[0] == "/") {
         case "/hi":
             sendMessage($chatId, "Hi {$firstname}");
             break;
-        case "/google":
-            $serch = str_replace(" ", "+", str_replace("/google ", "", $text));
-            $result = getFirstUrlFromGoogle($search);
-            if (!$result) {
-                sendMessage($chatId, "Mi dispiace {$firstname} ma non ho trovato nulla riguardo '" . str_replace("/google ", "", $text) ."'");
-            } else {
-                sendMessage($chatId, "Stavi forse cercando questo?\n{$result}");
-            }
-            break;
+        // case "/google":
+        //     $serch = str_replace(" ", "+", str_replace("/google ", "", $text));
+        //     $result = getFirstUrlFromGoogle($search);
+        //     if (!$result) {
+        //         sendMessage($chatId, "Mi dispiace {$firstname} ma non ho trovato nulla riguardo '" . str_replace("/google ", "", $text) ."'");
+        //     } else {
+        //         sendMessage($chatId, "Stavi forse cercando questo?\n{$result}");
+        //     }
+        //     break;
         default:
             sendMessage($chatId, "No function '" . substr($text, 1) . "' defined");
     }
