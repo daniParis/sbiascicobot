@@ -1,5 +1,5 @@
 <?php
-require "commands/first_google_search.php";
+require "commands/first-google-search.php";
 
 $content = file_get_contents("php://input");
 $update = json_decode($content, true);
