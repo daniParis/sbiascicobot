@@ -24,7 +24,7 @@ header("Content-Type: application/json");
 
 if ($text[0] == "/") {
     preg_match("([^ ]*)", $text, $matches);
-    switch ($matches[1]) {
+    switch ($matches[0]) {
         case "/hi":
             sendMessage($chatId, "Hi {$firstname}");
             break;
