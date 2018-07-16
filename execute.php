@@ -21,14 +21,14 @@ $text = strtolower($text);
 header("Content-Type: application/json");
 
 if ($text == "kebab?") {
-    if (rand() < 0.7) {
+    if (rand(0, 10) < 7) {
         $text = "Te sembra il caso? Mo?";
     } else {
         $text = "Zozzo! Ce sto!";
     }
 }
 
-$parameters = array('chat_id' => $chatId, "text" => $firstname . " : " . $text);
+$parameters = array('chat_id' => $chatId, "text" => $content);
 $parameters["method"] = "sendMessage";
 
 echo json_encode($parameters);
