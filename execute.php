@@ -21,11 +21,9 @@ $text = strtolower($text);
 header("Content-Type: application/json");
 
 if ($text[0] == "/") {
-    sendMessage($chatId, $text[0]);
-    die;
     switch ($text) {
         case "/hi":
-            sendMessage($chatId, "Hi {$firstname}");
+            sendMessage($chatId, "Hi ". $firstname);
             break;
         default:
             sendMessage($chatId, "No function '" . substr($text, 1) . "' defined");
