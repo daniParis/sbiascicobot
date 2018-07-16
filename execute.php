@@ -9,7 +9,7 @@ if (!$update) {
 $message = isset($update['message']) ? $update['message'] : "";
 $messageId = isset($message['message_id']) ? $message['message_id'] : "";
 $chatId = isset($message['chat']['id']) ? $message['chat']['id'] : "";
-$firstname = isset($message['chat']['first_name']) ? $message['chat']['first_name'] : "";
+$firstname = isset($message['chat']['first_name']) ? $message['chat']['first_name'] : isset($message['from']['first_name']) ? $message['from']['first_name'] : "";
 $lastname = isset($message['chat']['last_name']) ? $message['chat']['last_name'] : "";
 $username = isset($message['chat']['username']) ? $message['chat']['username'] : "";
 $date = isset($message['date']) ? $message['date'] : "";
