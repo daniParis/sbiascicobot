@@ -21,6 +21,8 @@ $text = strtolower($text);
 header("Content-Type: application/json");
 
 if ($text[0] == "/") {
+    sendMessage($chatId, $text[0]);
+    die;
     switch ($text) {
         case "/hi":
             sendMessage($chatId, "Hi {$firstname}");
