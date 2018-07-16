@@ -26,9 +26,8 @@ if ($text == "kebab?") {
     } else {
         $text = "Zozzo! Ce sto!";
     }
+    $parameters = array('chat_id' => $chatId, "text" => $text);
+    $parameters["method"] = "sendMessage";
+
+    echo json_encode($parameters);
 }
-
-$parameters = array('chat_id' => $chatId, "text" => $content);
-$parameters["method"] = "sendMessage";
-
-echo json_encode($parameters);
